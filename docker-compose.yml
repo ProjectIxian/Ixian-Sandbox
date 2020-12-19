@@ -5,7 +5,7 @@ services:
       context: ./ixian-dlt/
       args:
         URL: "https://github.com/ProjectIxian"
-        BRANCH: "development"
+        BRANCH: "master"
         #SHA: ""
         #BOOTSTRAP_URL: ""
         #GENESIS_FILE: ""
@@ -23,7 +23,7 @@ services:
       context: ./ixian-s2/
       args:
         URL: "https://github.com/ProjectIxian"
-        BRANCH: "development"
+        BRANCH: "master"
         #SHA: ""
         #BOOTSTRAP_URL: ""
         #GENESIS_FILE: ""
