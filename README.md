@@ -1,6 +1,4 @@
 # Ixian Sandbox Docker Images
-
-## About
 Ixian Sandbox includes Ixian DLT, Ixian S2 and Ixian Pool Docker images.  
 Ixian Pool connects to the Ixian DLT service.
 
