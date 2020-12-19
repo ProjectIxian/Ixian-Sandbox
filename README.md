@@ -30,4 +30,4 @@ To build and start the container, execute:
 Once the sandbox is started, you can access the services using your web browser:  
 Ixian DLT: http://localhost:8081/  
 Ixian S2: http://localhost:8001/  
-Ixian Pool: https://localhost/
+Ixian Pool: https://localhost:443/
