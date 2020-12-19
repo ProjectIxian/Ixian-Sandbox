@@ -1,0 +1,141 @@
+#!/bin/sh -e
+BASENAME=ixian-base:18.04
+
+createBase()
+{
+	baseExists=`docker images $BASENAME -q`
+	if [ "$baseExists" = "" ]; then
+    echo "Building Ixian Base"
+		docker build -t $BASENAME ./ixian-base
+	fi
+}
+
+create()
+{
+  stop
+  createBase
+  docker-compose -p ixian create
+}
+
+up()
+{
+  stop
+  createBase
+	docker-compose -p ixian up
+}
+
+down()
+{
+	docker-compose -p ixian down
+}
+
+clean()
+{
+  set +e
+  echo "Ixian Sandbox containers will be removed."
+  read -p "Are you sure you want to continue? (y/n): " confirmation
+  if [ $confirmation = "y" ]; then
+    stop
+    docker-compose -p ixian down --remove-orphans
+    docker rmi ixian_ixian-pool ixian_ixian-s2 ixian_ixian-dlt --force
+  else
+    exit 1
+  fi
+  set -e
+}
+
+start()
+{
+	docker-compose -p ixian start
+}
+
+stop()
+{
+	docker-compose -p ixian stop
+}
+
+build()
+{
+  down
+  docker-compose -p ixian build
+}
+
+execute()
+{
+  if [ $# -lt 2 ]; then
+    echo "Exec command requires service and command parameters."
+    exit 1
+  fi
+  service=$1
+  shift
+  docker-compose -p ixian exec -T $service "$@"
+}
+
+help()
+{
+  echo -e "\x1B[1mIxian Sandbox Help:"
+  echo -e "  \x1B[1mup\t\t\x1B[0m- creates and starts the sandbox environment."
+  echo -e "  \x1B[1mcreate\t\x1B[0m- creates the sandbox environment."
+  echo -e "  \x1B[1mstart\t\t\x1B[0m- starts the sandbox environment."
+  echo -e "  \x1B[1mstop\t\t\x1B[0m- stops the sandbox environment."
+  echo -e "  \x1B[1mdown\t\t\x1B[0m- stops and destroys the sandbox environment."
+  echo -e "  \x1B[1mbuild\t\t\x1B[0m- rebuilds the sandbox environment."
+  echo -e "  \x1B[1mclean\t\t\x1B[0m- removes the container and deletes temporary files."
+  echo -e "  \x1B[1mexec\t\t\x1B[0m- executes a shell command for the specified service."
+}
+
+sandbox()
+{
+	case $1 in
+		up)
+			shift
+			up
+			;;
+			
+    down)
+      shift
+      down
+      ;;
+      
+    create)
+	    shift
+      create "$@"
+      ;;
+
+    start)
+	    shift
+      start "$@"
+      ;;
+
+    stop)
+      stop
+      ;;
+	  
+    exec)
+      shift
+      execute "$@"
+      ;;
+
+    build)
+      build
+      ;;
+	  
+    clean)
+      clean
+      ;;
+
+    *)
+      if [ $1 ]; then
+        echo -e "\x1B[41mError\x1B[0m: Unknown command '$1'"
+      fi
+      help
+      ;;
+  esac
+}
+
+if ! [ -x "$(command -v docker-compose)" ]; then
+  echo -e "\x1B[41mError\x1B[0m: docker-compose is not installed." >&2
+  exit 1
+fi
+
+sandbox "$@"

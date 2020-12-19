@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  ixian-s2:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        URL: "https://github.com/ProjectIxian"
+        #BRANCH: "master"
+        #SHA: ""
+        #BOOTSTRAP_URL: ""
+        #GENESIS_FILE: ""
+        #WALLET_FILE: ""
+        #WALLET_PASSWORD: ""
+    ports:
+      - "8001:8081"
+      - "10235:10235"
+    expose:
+      - "8081"
+      - "10235"

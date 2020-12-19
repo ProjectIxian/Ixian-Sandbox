@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  ixian-dlt:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        URL: "https://github.com/ProjectIxian"
+        #BRANCH: "master"
+        #SHA: ""
+        #BOOTSTRAP_URL: ""
+        #GENESIS_FILE: ""
+        #WALLET_FILE: ""
+        #WALLET_PASSWORD: ""
+    ports:
+      - "8081:8081"
+      - "10234:10234"
+    expose:
+      - "8081"
+      - "10234"

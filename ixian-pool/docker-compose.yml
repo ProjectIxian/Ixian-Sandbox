@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  ixian-pool:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        URL: "https://github.com/ProjectIxian"
+        BRANCH: "master"
+        #SHA: ""
+        POOL_REWARD_ADDRESS: "153xXfVi1sznPcRqJur8tutgrZecNVYGSzetp47bQvRfNuDix"
+        POOL_FEE: "0.02"
+        POOL_URL: "https://my-ixian-pool.com/"
+        POOL_NAME: "My Ixian Pool"
+        DLT_URL: "http://ixian-dlt:8081"
+    ports:
+      - "443:443"
+      - "8181:8081"
+      - "10244:10234"
+    expose:
+      - "443"
+      - "8081"
+      - "10234"
+      
