@@ -6,11 +6,11 @@ if [ -f "/opt/update.next" ]; then
   cd ~/Ixian/Ixian-Pool
   git pull
   
-  DLT_HOST=`sed -n 's/^$dlt_host\s*=\s*\"\(.*\)\"\s*;\$/\1/p' /var/www/html/config.php`
-  POOL_FEE=`sed -n 's/^$poolfee\s*=\s*\(.*\);$/\1/p' /var/www/html/config.php`
-  POOL_REWARD_ADDRESS=`sed -n 's/^$poolfee_address\s*=\s*\"\(.*\)\"\s*;\$/\1/p' /var/www/html/config.php`
-  POOL_NAME=`sed -n 's/^$pool_name\s*=\s*\"\(.*\)\"\s*;\$/\1/p' /var/www/html/config.php`
-  POOL_URL=`sed -n 's/^$pool_url\s*=\s*\"\(.*\)\"\s*;\$/\1/p' /var/www/html/config.php`
+  DLT_HOST=`sed -n 's/^$dlt_host\s*=\s*\"\(.*\)\"\s*;/\1/p' /var/www/html/config.php`
+  POOL_FEE=`sed -n 's/^$poolfee\s*=\s*\(.*\);/\1/p' /var/www/html/config.php`
+  POOL_REWARD_ADDRESS=`sed -n 's/^$poolfee_address\s*=\s*\"\(.*\)\"\s*;/\1/p' /var/www/html/config.php`
+  POOL_NAME=`sed -n 's/^$pool_name\s*=\s*\"\(.*\)\"\s*;/\1/p' /var/www/html/config.php`
+  POOL_URL=`sed -n 's/^$pool_url\s*=\s*\"\(.*\)\"\s*;/\1/p' /var/www/html/config.php`
 
   cp -R ~/Ixian/Ixian-Pool/www/* /var/www/html/
   sed -i "/^\$db_host\s*=.*/ s//\$db_host = \"localhost\";/" /var/www/html/config.php
