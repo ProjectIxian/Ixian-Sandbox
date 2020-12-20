@@ -1,5 +1,8 @@
 #!/bin/bash -e
 if [ -f "~/update.next" ]; then
+  apt-get update --yes
+  apt-get upgrade --yes
+  
   cd ~/Ixian/Ixian-Core
   git pull
   cd ~/Ixian/Ixian-DLT

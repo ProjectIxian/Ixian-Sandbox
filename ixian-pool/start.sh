@@ -1,5 +1,8 @@
 #!/bin/bash -e
 if [ -f "/opt/update.next" ]; then
+  apt-get update --yes
+  apt-get upgrade --yes
+
   cd ~/Ixian/Ixian-Pool
   git pull
   
