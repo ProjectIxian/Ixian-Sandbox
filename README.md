@@ -8,11 +8,17 @@ To run the container you will need to install Docker Compose, see: https://docs.
 
 
 ## How to use
-To build and start the container, execute:  
+Unix/Bash: To build and start the container, execute the following  
 ```
 ./sandbox up
 ```
 
+Windows: To build and start the container, execute the following  
+```
+sandbox.bat up
+```
+
+## Sandbox commands
 | Command     | Description                                         |
 | ----------- | --------------------------------------------------- |
 | **up**      | Creates and starts the sandbox environment.         |
