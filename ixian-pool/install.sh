@@ -23,15 +23,19 @@ apt-get install cron -y
 apt-get install apache2 -y
 apt-get install php php-cli php-fpm php-json php-common php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath -y
 apt-get install mariadb-server -y
-a2enmod ssl
-a2ensite default-ssl
+
 service mysql restart
+
+a2enmod ssl
+a2enmod rewrite
+a2ensite default-ssl
+sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf
 service apache2 restart
 
 echo "Fetching Ixian-Pool"
 git clone -b "$BRANCH" "$URL/Ixian-Pool.git"
 
-cp -R /opt/Ixian/Ixian-Pool/www/* /var/www/html/
+cp -R /opt/Ixian/Ixian-Pool/www/. /var/www/html/
 rm /var/www/html/index.html
 
 sed -i "/^\$db_host\s*=.*/ s//\$db_host = \"localhost\";/" /var/www/html/config.php
