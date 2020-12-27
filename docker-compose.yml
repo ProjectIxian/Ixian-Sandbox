@@ -52,3 +52,16 @@ services:
       - "443:443"
     expose:
       - "443"
+
+  ixian-explorer:
+    build:
+      context: ./ixian-explorer/
+      args:
+        URL: "https://github.com/ProjectIxian"
+        BRANCH: "main"
+        #SHA: ""
+        DLT_URL: "http://ixian-dlt:8081"
+    ports:
+      - "444:443"
+    expose:
+      - "443"

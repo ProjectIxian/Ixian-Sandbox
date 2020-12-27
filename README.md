@@ -1,11 +1,12 @@
 # Ixian Sandbox Docker Images
-Ixian Sandbox includes Ixian DLT, Ixian S2 and Ixian Pool Docker images.  
+Ixian Sandbox includes Ixian DLT, Ixian S2, Ixian Pool and Ixian Explorer Docker images.  
 Ixian Pool connects to the Ixian DLT service.  
 All services in this container are pulled from GitHub and are built from source.  
 For more information about specific service, see:  
 **Ixian DLT** - https://github.com/ProjectIxian/Ixian-DLT  
 **Ixian S2** - https://github.com/ProjectIxian/Ixian-S2  
 **Ixian Pool** - https://github.com/ProjectIxian/Ixian-Pool  
+**Ixian Explorer** - https://github.com/ProjectIxian/Ixian-Explorer  
 
 
 ## Prerequisites
@@ -27,6 +28,7 @@ Once the sandbox is started, you can access the services using your web browser:
 Ixian DLT: http://localhost:8081/  
 Ixian S2: http://localhost:8001/  
 Ixian Pool: https://localhost:443/  
+Ixian Explorer: https://localhost:444/  
 
 
 ## Sandbox commands

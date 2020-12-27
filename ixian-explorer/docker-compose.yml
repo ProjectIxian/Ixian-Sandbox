@@ -6,15 +6,11 @@ services:
       dockerfile: ./Dockerfile
       args:
         URL: "https://github.com/ProjectIxian"
-        BRANCH: "master"
+        BRANCH: "main"
         #SHA: ""
-        POOL_REWARD_ADDRESS: "153xXfVi1sznPcRqJur8tutgrZecNVYGSzetp47bQvRfNuDix"
-        POOL_FEE: "0.02"
-        POOL_URL: "https://my-ixian-pool.com/"
-        POOL_NAME: "My Ixian Pool"
         DLT_URL: "http://ixian-dlt:8081"
     ports:
-      - "443:443"
+      - "444:443"
     expose:
       - "443"
       
