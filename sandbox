@@ -37,7 +37,7 @@ clean()
   if [ $confirmation = "y" ]; then
     stop
     docker-compose -p ixian down --remove-orphans
-    docker rmi ixian_ixian-pool ixian_ixian-s2 ixian_ixian-dlt --force
+    docker rmi ixian_ixian-explorer ixian_ixian-pool ixian_ixian-s2 ixian_ixian-dlt --force
   else
     exit 1
   fi

@@ -14,6 +14,6 @@ ARG DLT_URL="http://ixian-dlt:8081"
 
 COPY . /opt
 WORKDIR /opt
-RUN sh /opt/install.sh "${URL}" "${BRANCH}" "${SHA}" "${POOL_REWARD_ADDRESS}" "${POOL_FEE}" "${POOL_NAME}" "${POOL_URL}" "${DLT_URL}"
+RUN sh /opt/install.sh "${URL}" "${BRANCH}" "${SHA}" "${DLT_URL}"
 
 ENTRYPOINT /opt/start.sh
